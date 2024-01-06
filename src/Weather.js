@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default function Weather() {
-  let [city, setCity] = useState("");
-  let [enter, setEnter] = useState(false);
+  let [city, setCity] = useState("Paris");
   let [weather, setWeather] = useState({});
+  let [exist, setExist] = useState("");
 
   function displayWeather(response) {
-    setEnter(true);
+    setExist("true");
     setWeather({
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
@@ -29,54 +29,73 @@ export default function Weather() {
   }
 
   let form = (
-    <form className="text-center fs-5 mt-5 mb-5" onSubmit={handleSubmit}>
-      <input
-        type="search"
-        placeholder="Enter a City"
-        required
-        className="me-3 rounded p-2 ps-3 border-2 bg-light-subtle w-75"
-        onChange={updateCity}
-      />
-      <input
-        type="submit"
-        value="Search"
-        className="text-center rounded p-2 pe-3 ps-3 border-0 bg-black text-light"
-      />
-    </form>
+    <div>
+      <form className="text-center fs-5 mt-5 mb-5" onSubmit={handleSubmit}>
+        <input
+          type="search"
+          placeholder="Enter a City"
+          required
+          className="me-3 rounded p-2 ps-3 border-2 bg-light-subtle w-75"
+          onChange={updateCity}
+        />
+        <input
+          type="submit"
+          value="Search"
+          className="text-center rounded p-2 pe-3 ps-3 border-0 bg-black text-light"
+        />
+      </form>
+    </div>
   );
 
-  if (enter) {
-    return (
-      <div>
-        {form}
-        <div className="d-flex justify-content-between align-items-center me-3 ms-3 mb-4">
-          <div className="Temp">
-            <div className="d-flex">
-              <span className="icon">
-                <img src={weather.icon} alt={weather.description} />
-              </span>
-              <span className="temperature">
-                {Math.round(weather.temperature)}
-              </span>
-              <span className="unit">°C</span>
-              <span className="line ps-1">|</span>
-              <span className="unit">°F</span>
-            </div>
+  let content = (
+    <div>
+      <div className="App">
+        <header className="text-start ms-4 mb-3 text-muted">
+          <h1 className="fw-bold">{city}</h1>
+          <h2 className="fs-4">Last Updated: Tuesday 10:00</h2>
+        </header>
+      </div>
+      <div className="d-flex justify-content-between align-items-center me-3 ms-3 mb-4">
+        <div className="Temp">
+          <div className="d-flex">
+            <span className="icon">
+              <img src={weather.icon} alt={weather.description} width={150} />
+            </span>
+            <span className="temperature">
+              {Math.round(weather.temperature)}
+            </span>
+            <span className="unit">°C</span>
+            <span className="line ps-1">|</span>
+            <span className="unit">°F</span>
           </div>
-          <div className="Condition">
-            <div className="me-4 fs-3">
-              <div>
-                <strong>Humidity</strong>: {weather.humidity}%
-              </div>
-              <div>
-                <strong>Wind</strong>: {weather.wind} km/h
-              </div>
+        </div>
+        <div className="Condition">
+          <div className="me-4 fs-3">
+            <div>
+              <strong>Humidity</strong>: {weather.humidity}%
+            </div>
+            <div>
+              <strong>Wind</strong>: {weather.wind} km/h
             </div>
           </div>
         </div>
       </div>
+    </div>
+  );
+
+  if (exist) {
+    return (
+      <div>
+        {form}
+        {content}
+      </div>
     );
   } else {
-    return form;
+    return (
+      <div>
+        {form}
+        <h2 className="text-center">Please enter a city name</h2>
+      </div>
+    );
   }
 }

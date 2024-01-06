@@ -11,15 +11,9 @@ root.render(
   <React.StrictMode>
     <div className="container w-50 border border-black border-2 bg-dark-subtle rounded">
       <Weather />
-      <App />
     </div>
     <br />
-    <footer className="footer text-center fs-4 fw-bold">
-      Built by{" "}
-      <a href="https://github.com/mierawats/react-homework-week-four">
-        Miera Azmi
-      </a>
-    </footer>
+    <App />
   </React.StrictMode>
 );
 
