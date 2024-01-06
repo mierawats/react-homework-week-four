@@ -1,13 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import App from "./App";
+import Search from "./Search";
+import Temp from "./Temp";
+import Condition from "./Condition";
+import Weather from "./Weather";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <div className="container w-50 border border-black border-2 bg-dark-subtle rounded">
+      <Search />
+      <App />
+      <Weather city="Tokyo" />
+      <div className="d-flex justify-content-between align-items-center me-3 ms-3 mb-4">
+        <Temp />
+        <Condition />
+      </div>
+    </div>
   </React.StrictMode>
 );
 
