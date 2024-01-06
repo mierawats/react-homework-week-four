@@ -4,23 +4,16 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
 import App from "./App";
-import Search from "./Search";
-import Temp from "./Temp";
-import Condition from "./Condition";
 import Weather from "./Weather";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <div className="container w-50 border border-black border-2 bg-dark-subtle rounded">
-      <Search />
+      <Weather />
       <App />
-      <Weather city="Tokyo" />
-      <div className="d-flex justify-content-between align-items-center me-3 ms-3 mb-4">
-        <Temp />
-        <Condition />
-      </div>
     </div>
+    <br />
     <footer className="footer text-center fs-4 fw-bold">
       Built by{" "}
       <a href="https://github.com/mierawats/react-homework-week-four">
