@@ -21,6 +21,12 @@ root.render(
         <Condition />
       </div>
     </div>
+    <footer className="footer text-center fs-4 fw-bold">
+      Built by{" "}
+      <a href="https://github.com/mierawats/react-homework-week-four">
+        Miera Azmi
+      </a>
+    </footer>
   </React.StrictMode>
 );
 
